@@ -72,7 +72,7 @@ const translations = {
     msgNeedConsistent: 'Je mag nog wat constanter trainen.',
     msgStable: 'Je bent prima bezig en zit op een stabiel tempo.',
     msgStrong: 'Sterk tempo, je loopt erg goed.',
-    overviewEmpty: 'Nog geen runs in deze periode.',
+    overviewEmpty: 'Nog geen runs in deze periode. Start een run en sla je resultaat op om het hier te zien.',
     overviewItem: (run) =>
       `${run.date} • ${run.distanceKm.toFixed(2)} km in ${formatDuration(run.durationSec)} • ${run.avgSpeedKmh.toFixed(1)} km/u`
   },
@@ -118,7 +118,7 @@ const translations = {
     msgNeedConsistent: 'You could train a bit more consistently.',
     msgStable: 'You are doing well and running at a stable pace.',
     msgStrong: 'Strong pace, you are running very well.',
-    overviewEmpty: 'No runs in this period yet.',
+    overviewEmpty: 'No runs in this period yet. Start a run and save your result to see it here.',
     overviewItem: (run) =>
       `${run.date} • ${run.distanceKm.toFixed(2)} km in ${formatDuration(run.durationSec)} • ${run.avgSpeedKmh.toFixed(1)} km/h`
   }
