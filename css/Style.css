@@ -423,6 +423,13 @@ button:focus-visible {
   margin-top: 0.75rem;
 }
 
+.version-note {
+  margin-top: 1.25rem;
+  color: rgba(156, 163, 175, 0.9);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
 .run-item {
   display: flex;
   flex-direction: column;
@@ -594,4 +601,10 @@ button:focus-visible {
   .run-item__delete {
     align-self: auto;
   }
+
+.app-footer-note {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 }
