@@ -1,4 +1,4 @@
-const CACHE_NAME = 'runpulse-cache-v1';
+const CACHE_NAME = 'runpulse-cache-v2';
 
 // Bestanden die de app offline beschikbaar houdt.
 const FILES_TO_CACHE = [
@@ -33,8 +33,14 @@ self.addEventListener('activate', (event) => {
 // Geeft eerst de cache terug en haalt pas daarna nieuwe bestanden op.
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return cached || fetch(event.request);
+    fetch(event.request).then((networkResponse) => {
+      const responseClone = networkResponse.clone();
+      caches.open(CACHE_NAME).then((cache) => {
+        cache.put(event.request, responseClone);
+      });
+      return networkResponse;
+    }).catch(() => {
+      return caches.match(event.request);
     })
   );
 });
