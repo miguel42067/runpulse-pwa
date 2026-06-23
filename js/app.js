@@ -211,6 +211,7 @@ function updateTimer() {
   updateDisplay();
 }
 
+// Bereken het resultaat van de run, sla het op en werk het overzicht bij.
 function calculateResult() {
   const lang = langSelect.value;
   const dict = translations[lang];
@@ -318,6 +319,7 @@ function updateDisplay() {
 }
 
 // ===== Overzicht (Read + Delete) =====
+// Toon alle opgeslagen runs in de gekozen periode en werk het run-overzicht bij.
 function renderRunsOverview() {
   const runs = loadRuns();
   const period = periodSelect.value;
@@ -378,7 +380,7 @@ window.deleteRun = function (id) {
   renderRunsOverview();
 };
 
-// Reset ALLE runs
+// Reset ALLE runs: verwijder alle opgeslagen data en zet de UI terug naar de startstand.
 function resetAllRuns() {
   const lang = langSelect.value;
   const dict = translations[lang];
