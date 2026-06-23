@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RunPulse</title>
-  <link rel="stylesheet" href="css/Style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#111827">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RunPulse — Start</title>
+
+  <!-- Gedeelde styling -->
+  <link rel="stylesheet" href="css/Style.css" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111827" />
 </head>
 <body>
   <header class="hero">
     <div class="hero__content">
       <div class="hero-brand">
-        <img class="hero-logo" src="icons/hardlopen.png" alt="RunPulse logo">
+        <img class="hero-logo" src="icons/hardlopen.png" alt="RunPulse logo" />
         <div class="hero-brand__text">
-          <p class="eyebrow" data-i18n="eyebrow">Run tracker</p>
-          <h1 data-i18n="title">RunPulse</h1>
+          <p class="eyebrow">Run tracker</p>
+          <h1>RunPulse</h1>
         </div>
       </div>
-      <p class="hero__text" data-i18n="heroText">
+
+      <p class="hero__text">
         Een strakke hardlooptracker voor timer, afstand en je eindresultaat.
       </p>
 
-      <!-- Taalswitch -->
+      <!-- Navigatie tussen je 3 pagina's -->
+      <nav class="main-nav" role="navigation" aria-label="Navigatie">
+        <a href="Index.html" class="active" aria-current="page">Start</a>
+        <a href="resultaat.html">Resultaat</a>
+        <a href="overzicht.html">Overzicht</a>
+      </nav>
+
+      <!-- Taalswitch (voor later i18n / JS) -->
       <div class="lang-switch">
-        <label for="language-switch" data-i18n="languageLabel">Taal:</label>
+        <label for="language-switch">Taal:</label>
         <select id="language-switch">
           <option value="nl">NL</option>
           <option value="en">EN</option>
@@ -36,19 +48,19 @@
   <main class="app-shell">
     <section id="hardloop-data" class="stats-card">
       <div class="stats-card__header">
-        <h2 data-i18n="statsTitle">Je hardloopstatistieken</h2>
-        <span class="status-pill" data-i18n="statusReady">Klaar</span>
+        <h2>Je hardloopstatistieken</h2>
+        <span class="status-pill">Klaar</span>
       </div>
 
-      <p class="section-help" data-i18n="statsHelp">
+      <p class="section-help">
         Hier zie je je timer tijdens het lopen.
       </p>
 
       <div class="stats-grid stats-grid--single">
         <article class="stat-box stat-box--timer">
-          <span class="stat-label" data-i18n="timerLabel">Timer</span>
+          <span class="stat-label">Timer</span>
           <strong id="time">00:00</strong>
-          <p class="stat-explain" data-i18n="timerHelp">
+          <p class="stat-explain">
             Dit is de tijd sinds je op start hebt gedrukt.
           </p>
         </article>
@@ -60,93 +72,21 @@
         </div>
       </div>
 
-      <p class="helper-text" data-i18n="helperText">
-        Start je run, stop daarna en vul je km en meter in voor je samenvatting.
+      <p class="helper-text">
+        Start je run, stop daarna en open de pagina "Resultaat" om afstand in te vullen.
       </p>
-
-      <div id="run-summary" class="run-summary is-hidden" aria-live="polite">
-        <label class="summary-label" data-i18n="summaryLabel">
-          Hoeveel heb je gelopen?
-        </label>
-        <p class="section-help section-help--small" data-i18n="summaryHelp">
-          Vul je afstand in nadat je op stop hebt gedrukt.
-        </p>
-        <div class="summary-controls">
-          <div class="distance-group">
-            <label for="km-input" class="field-label" data-i18n="kmLabel">Kilometer</label>
-            <p class="field-help" data-i18n="kmHelp">Vul hier het hele aantal kilometers in.</p>
-            <input id="km-input" type="number" min="0" step="1" inputmode="numeric" placeholder="5">
-          </div>
-
-          <div class="distance-group">
-            <label for="meter-input" class="field-label" data-i18n="meterLabel">Meter</label>
-            <p class="field-help" data-i18n="meterHelp">Gebruik dit voor de losse meters extra.</p>
-            <input id="meter-input" type="number" min="0" max="999" step="1" inputmode="numeric" placeholder="200">
-          </div>
-
-          <div class="distance-group">
-            <label for="description-input" class="field-label" data-i18n="descLabel">
-              Omschrijving
-            </label>
-            <p class="field-help" data-i18n="descHelp">
-              Bijvoorbeeld waar of hoe je gelopen hebt.
-            </p>
-            <input id="description-input" type="text" placeholder="Avondrun door het park">
-          </div>
-
-          <button id="calculate-btn" type="button" data-i18n="calculateBtn">
-            Bereken resultaat
-          </button>
-        </div>
-
-        <div class="result-card">
-          <p id="result-message" class="result-message" data-i18n="resultDefault">
-            Vul je afstand in om je resultaat te zien.
-          </p>
-          <p id="result-details" class="result-details"></p>
-        </div>
-      </div>
 
       <div class="controls">
-        <button id="start-btn" data-i18n="startBtn">Start hardloop</button>
-        <button id="stop-btn" disabled data-i18n="stopBtn">Stop</button>
+        <button id="start-btn">Start hardloop</button>
+        <button id="stop-btn" disabled>Stop</button>
       </div>
-    </section>
-
-    <!-- Overzichtsscherm met reset-knop -->
-    <section id="overview" class="run-overview">
-      <h2 data-i18n="overviewTitle">Overzicht van je runs</h2>
-      <p class="section-help" data-i18n="overviewHelp">
-        Hier zie je eerdere trainingen die je hebt opgeslagen.
-      </p>
-
-      <div class="overview-controls">
-        <label for="period-select" data-i18n="periodLabel">Periode:</label>
-        <span class="control-help" data-i18n="periodHelp">Kies welke runs je wilt bekijken.</span>
-        <select id="period-select">
-          <option value="day" data-i18n="periodDay">Vandaag</option>
-          <option value="week" data-i18n="periodWeek">Deze week</option>
-          <option value="month" data-i18n="periodMonth">Deze maand</option>
-        </select>
-
-        <button id="reset-all-btn" type="button" class="reset-btn" data-i18n="resetAllBtn">
-          Reset alle runs
-        </button>
-      </div>
-
-      <div id="runs-list">
-        <!-- dynamische lijst via JS -->
-      </div>
-
-      <p class="app-footer-note">
-        RunPulse v1.0 – Progressive Web App voor opdracht "Mijn Gezondheid"
-      </p>
     </section>
   </main>
 
-  <script src="js/app.js"></script>
+  <!-- Gedeelde JS voor alle pagina's -->
+  <script src="js/app.js" defer></script>
 
-  <!-- Service worker registratie -->
+  <!-- Service worker registratie (PWA) -->
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./service-worker.js')

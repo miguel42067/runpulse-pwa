@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RunPulse — Resultaat</title>
+  <link rel="stylesheet" href="css/Style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111827" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <div class="hero-brand">
+        <img class="hero-logo" src="icons/hardlopen.png" alt="RunPulse logo" />
+        <div class="hero-brand__text">
+          <p class="eyebrow">Run tracker</p>
+          <h1>RunPulse</h1>
+        </div>
+      </div>
+
+      <nav class="main-nav" role="navigation" aria-label="Navigatie">
+        <a href="Index.html">Start</a>
+        <a href="resultaat.html" class="active" aria-current="page">Resultaat</a>
+        <a href="overzicht.html">Overzicht</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section id="result-section" class="stats-card">
+      <h2>Resultaat invullen</h2>
+      <p class="section-help">Vul je afstand in nadat je op stop hebt gedrukt.</p>
+
+      <div class="summary-controls">
+        <div class="distance-group">
+          <label for="km-input" class="field-label">Kilometer</label>
+          <p class="field-help">Vul hier het hele aantal kilometers in.</p>
+          <input id="km-input" type="number" min="0" step="1" inputmode="numeric" placeholder="5">
+        </div>
+
+        <div class="distance-group">
+          <label for="meter-input" class="field-label">Meter</label>
+          <p class="field-help">Gebruik dit voor de losse meters extra.</p>
+          <input id="meter-input" type="number" min="0" max="999" step="1" inputmode="numeric" placeholder="200">
+        </div>
+
+        <div class="distance-group">
+          <label for="description-input" class="field-label">Omschrijving</label>
+          <p class="field-help">Bijvoorbeeld waar of hoe je gelopen hebt.</p>
+          <input id="description-input" type="text" placeholder="Avondrun door het park">
+        </div>
+
+        <button id="calculate-btn" type="button">Bereken resultaat</button>
+      </div>
+
+      <div class="result-card">
+        <p id="result-message" class="result-message">Vul je afstand in om je resultaat te zien.</p>
+        <p id="result-details" class="result-details"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>

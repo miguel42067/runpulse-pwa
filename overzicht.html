@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RunPulse — Overzicht</title>
+  <link rel="stylesheet" href="css/Style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111827" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <div class="hero-brand">
+        <img class="hero-logo" src="icons/hardlopen.png" alt="RunPulse logo" />
+        <div class="hero-brand__text">
+          <p class="eyebrow">Run tracker</p>
+          <h1>RunPulse</h1>
+        </div>
+      </div>
+
+      <nav class="main-nav" role="navigation" aria-label="Navigatie">
+        <a href="Index.html">Start</a>
+        <a href="resultaat.html">Resultaat</a>
+        <a href="overzicht.html" class="active" aria-current="page">Overzicht</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section id="overview" class="run-overview">
+      <h2>Overzicht van je runs</h2>
+      <p class="section-help">Hier zie je eerdere trainingen die je hebt opgeslagen.</p>
+
+      <div class="overview-controls">
+        <label for="period-select">Periode:</label>
+        <select id="period-select">
+          <option value="day">Vandaag</option>
+          <option value="week">Deze week</option>
+          <option value="month">Deze maand</option>
+        </select>
+
+        <button id="reset-all-btn" type="button" class="reset-btn">Reset alle runs</button>
+      </div>
+
+      <div id="runs-list"></div>
+
+      <p class="app-footer-note">RunPulse v1.0 – Progressive Web App voor opdracht "Mijn Gezondheid"</p>
+    </section>
+  </main>
+
+  <script src="js/app.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>
