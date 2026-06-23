@@ -216,8 +216,8 @@ function calculateResult() {
   const lang = langSelect.value;
   const dict = translations[lang];
 
-  const kilometers = Number.parseInt(kmInput.value, 10);
-  const meters = Number.parseInt(meterInput.value, 10);
+  const kilometers = parseDistanceInput(kmInput.value);
+  const meters = parseDistanceInput(meterInput.value);
   const walkedDistance = calculateTotalDistance(kilometers, meters);
 
   if (!Number.isFinite(walkedDistance) || walkedDistance <= 0) {
@@ -292,6 +292,11 @@ function calculateTotalDistance(kilometers, meters) {
     return NaN;
   }
   return kilometers + meters / 1000;
+}
+
+function parseDistanceInput(value) {
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) ? parsed : 0;
 }
 
 function formatPace(minutesPerKm) {
