@@ -1,4 +1,5 @@
 // ===== Basis variabelen =====
+// In deze file staat de hele app-logica: timer, distance, taal en opslag.
 let distance = 0;
 let time = 0;
 let isRunning = false;
@@ -6,6 +7,8 @@ let timerInterval;
 const goalDuration = 30 * 60; // 30 minuten
 
 // DOM-elementen
+// Deze elementen zijn belangrijk voor de interactie met de pagina.
+
 const timeEl = document.getElementById('time');
 const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
@@ -25,10 +28,13 @@ const langSelect = document.getElementById('language-switch');
 const resetAllBtn = document.getElementById('reset-all-btn');
 
 // LocalStorage keys
+// Ik gebruik LocalStorage om de runs te bewaren tussen refreshes.
 const STORAGE_KEY = 'runpulse_runs';
 const LANG_KEY = 'runpulse_lang';
 
 // ===== Vertalingen =====
+// Alle tekst bij elkaar stoppen maakt taalwissel makkelijker.
+
 const translations = {
   nl: {
     eyebrow: 'Run tracker',
@@ -135,6 +141,8 @@ function saveRuns(runs) {
 }
 
 // ===== Taalfuncties =====
+// Met deze functies speel ik de juiste tekst in de interface in voor NL of EN.
+
 function setLanguage(lang) {
   const dict = translations[lang] || translations.nl;
 
